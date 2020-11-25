@@ -1,4 +1,4 @@
-FROM openjdk:8  
+FROM java:8  
 COPY ./Main.java /etc
 COPY ./mysql-connector-java-5.1.49.jar /etc
 WORKDIR /etc
