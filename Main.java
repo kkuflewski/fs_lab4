@@ -6,16 +6,17 @@ public class Main {
    
    public static void main(String[] args) throws SQLException, ClassNotFoundException {
       String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-      String DB_URL = "jdbc:mysql://10.0.10.3:3306/albums?serverTimezone=UTC";
+      String DB_URL = "jdbc:mysql://10.0.10.3:3306/kkuflewski?autoReconnect=true&useSSL=false";
       String DB_USER = "KKuflewski";
       String DB_PASS = "KKuflewski";
  
       Statement stmt = null;
       Connection connection = null;
  
-      while(connection == null){
+      
       try {
-	  connection = DriverManager.getConnection(DB_URL,DB_USER,DB_PASS);
+	  Class.forName(JDBC_DRIVER);
+	  connection = (Connection) DriverManager.getConnection(DB_URL,DB_USER,DB_PASS);
           if(connection != null)
           {
               System.out.println("Polaczono!");
@@ -105,7 +106,7 @@ public class Main {
       {
           e.printStackTrace();
       }
-      }
+      
    }
    public static void createDB(Connection conn) throws SQLException
    {
